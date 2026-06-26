@@ -7,8 +7,6 @@ class Task
     public string Description;
     public bool Complete;
 
-
-    
     
 }
 
@@ -21,6 +19,7 @@ class Program
         List<Task> tasks = new List<Task>();
         string taskTitle;
         string taskDescription;
+        int markComplete;
         
         // FUCNTIONS
         
@@ -36,17 +35,43 @@ class Program
         }
         
         //list tasks function
-
         void ListTask(List<Task> tasks)
         {
+            Console.Clear();
+            string status;
+            
             foreach (Task task in tasks)
             {
-                Console.WriteLine($"{task.Title}\n{task.Description}\n{task.Complete}\n==============\n");
+
+                if (task.Complete)
+                    status = "Done";
+                else
+                    status = "Pending...";
+                
+                Console.WriteLine($"Task {tasks.IndexOf(task)+1}: {task.Title}\n{task.Description}\n{status}\n==============\n");
                 
 
             }
             return;
         }
+        
+        //Mark as complete function
+
+        void CompleteTask(int markComplete, Task tasks)
+        {
+            bool succes = false;
+            for (int i = 0; i <= markComplete; i++)
+            {
+                if (tasks.IndexOf(i) == markComplete)
+                {
+                    
+                }
+            }
+            return;
+        }
+        
+        
+        
         
         // MENU
         do
@@ -94,8 +119,14 @@ class Program
             //OPTION 3
             case "3":
             {
+                
                 Console.Clear();
                 Console.WriteLine(bar);
+                Console.WriteLine("Mark as complete");
+                Console.WriteLine("Type the number of the task you want to mark as complete: ");
+                markComplete = int.Parse(Console.ReadLine());
+                
+                
                 break;
             }
         }
