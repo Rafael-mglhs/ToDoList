@@ -36,8 +36,17 @@ class Program
         }
         
         //list tasks function
-        
-        
+
+        void ListTask(List<Task> tasks)
+        {
+            foreach (Task task in tasks)
+            {
+                Console.WriteLine($"{task.Title}\n{task.Description}\n{task.Complete}\n==============\n");
+                
+
+            }
+            return;
+        }
         
         // MENU
         do
@@ -71,12 +80,22 @@ class Program
                 
                 break;
             }
+            // OPTION 2
             case "2":
             {
                 Console.Clear();
                 Console.WriteLine(bar);
                 Console.WriteLine("Tasks");
-                ;
+                ListTask(tasks);
+                Console.WriteLine("Press any key to continue...");
+                Console.ReadKey();
+                break;
+            }
+            //OPTION 3
+            case "3":
+            {
+                Console.Clear();
+                Console.WriteLine(bar);
                 break;
             }
         }
