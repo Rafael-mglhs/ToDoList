@@ -57,17 +57,27 @@ class Program
         
         //Mark as complete function
 
-        void CompleteTask(int markComplete, Task tasks)
+        void CompleteTask(int markComplete, List <Task> tasks)
         {
-            bool succes = false;
-            for (int i = 0; i <= markComplete; i++)
+            if (markComplete > tasks.Count)
             {
-                if (tasks.IndexOf(i) == markComplete)
-                {
-                    
-                }
+                Console.WriteLine("Invalid task number!");
+                return;
+            }
+            else
+            {
+            tasks[(markComplete - 1)].Complete = true;
+            if (tasks[(markComplete - 1)].Complete)
+            {
+                Console.WriteLine("Marked successful");
+            }
+            else
+            {
+                Console.WriteLine("Error in searching the task");
             }
             return;
+            
+            }
         }
         
         
@@ -126,6 +136,8 @@ class Program
                 Console.WriteLine("Type the number of the task you want to mark as complete: ");
                 markComplete = int.Parse(Console.ReadLine());
                 
+                CompleteTask(markComplete, tasks);
+                Console.ReadKey();
                 
                 break;
             }
