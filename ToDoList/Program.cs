@@ -20,6 +20,7 @@ class Program
         string taskTitle;
         string taskDescription;
         int markComplete;
+        int removeTask;
         
         // FUCNTIONS
         
@@ -80,6 +81,23 @@ class Program
             }
         }
         
+        // Remove task funciton
+
+        void RemoveTask(int removeTask, List<Task> tasks)
+        {
+            int parameter = tasks.Count;
+            tasks.RemoveAt(removeTask - 1);
+            if (tasks.Count < parameter)
+            {
+                Console.WriteLine("Task Removed with success!");
+            }
+            else
+            {
+                Console.Write("Error in removing the task!");
+            }
+            return;
+            
+        }
         
         
         
@@ -89,7 +107,7 @@ class Program
         Console.Clear();
         string bar = "==============================";
         Console.WriteLine(bar);
-        Console.WriteLine("To Do List\n1 - Add task\n2 - List tasks\n3 - Mark as complete\n4 - Remove task\n5 - Save\n6 - Load\n0 - Exit");
+        Console.WriteLine("To Do List\n1 - Add task\n2 - List tasks\n3 - Mark as complete\n4 - Remove task\n5 - Edit task\n6 - Search task\n0 - Exit");
         Console.Write("Choose an option: ");
         option = (Console.ReadLine());
 
@@ -141,6 +159,22 @@ class Program
                 
                 break;
             }
+            // OPTION 4
+            case "4":
+            {
+                Console.Clear();
+                Console.WriteLine(bar);
+                Console.WriteLine("Removo task");
+                Console.WriteLine("Type the number os the task you want to remove: ");
+                removeTask = int.Parse(Console.ReadLine());
+                
+                RemoveTask(removeTask, tasks);
+                
+                Console.WriteLine("Press any key to continue...");
+                Console.ReadKey();
+                break;
+            }
+            
         }
         } while (option != "0");
     }
