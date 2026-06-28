@@ -21,6 +21,9 @@ class Program
         string taskDescription;
         int markComplete;
         int removeTask;
+        int editTask;
+        string editTitle;
+        string editDescription;
         
         // FUCNTIONS
         
@@ -99,7 +102,26 @@ class Program
             
         }
         
-        
+        //Edit task funciton
+        void EditTask(int editTask, string editTitle, string editDescription, List<Task> tasks)
+        {
+            string titleParameter = tasks[editTask - 1].Title;
+            string descriptionParameter = tasks[editTask - 1].Description;
+
+            tasks[editTask - 1].Title = editTitle;
+            tasks[editTask - 1].Description = editDescription;
+
+            if ((tasks[editTask - 1].Title == titleParameter) && (tasks[editTask - 1].Description == descriptionParameter))
+            {
+                Console.WriteLine("Task maintained original title and description!");
+            }
+            else
+            {
+                Console.WriteLine("Task edited with success!");
+            }
+            
+            return;
+        }
         
         // MENU
         do
@@ -164,14 +186,33 @@ class Program
             {
                 Console.Clear();
                 Console.WriteLine(bar);
-                Console.WriteLine("Removo task");
-                Console.WriteLine("Type the number os the task you want to remove: ");
+                Console.WriteLine("Remove task");
+                Console.WriteLine("Type the number of the task you want to remove: ");
                 removeTask = int.Parse(Console.ReadLine());
                 
                 RemoveTask(removeTask, tasks);
                 
                 Console.WriteLine("Press any key to continue...");
                 Console.ReadKey();
+                break;
+            }
+            case "5":
+            {
+                Console.Clear();
+                Console.WriteLine(bar);
+                Console.WriteLine("Edit task");
+                Console.WriteLine("Type the number of the task you want to edit: ");
+                editTask = int.Parse(Console.ReadLine());
+                Console.WriteLine("Type the new title of the task");
+                editTitle = Console.ReadLine();
+                Console.WriteLine("Type the new description of the task: ");
+                editDescription = Console.ReadLine();
+                
+                EditTask(editTask, editTitle, editDescription, tasks);
+                
+                Console.WriteLine("Type any key to continue...");
+                Console.ReadKey();
+                
                 break;
             }
             

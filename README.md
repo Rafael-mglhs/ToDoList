@@ -110,4 +110,4 @@ To Do List
 
 ## Author
 
-Developed by Rafael as a personal project to practice C# and software development.
+Developed by Rafael-mglhs as a personal project to practice C# and software development.
