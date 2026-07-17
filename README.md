@@ -11,9 +11,8 @@ This project is part of my learning journey and will gradually evolve as I study
 - ✅ Add new tasks
 - ✅ List all tasks
 - ✅ Mark tasks as completed
-- ⏳ Remove tasks *(planned)*
-- ⏳ Save tasks to a file *(planned)*
-- ⏳ Load tasks from a file *(planned)*
+- ✅ Remove tasks
+- ⏳ Save and load tasks of a JSON file *(planned)*
 
 ---
 
@@ -87,17 +86,15 @@ To Do List
 - [x] Create task
 - [x] List tasks
 - [x] Mark task as completed
-- [ ] Remove task
-- [ ] Save tasks to a text file
-- [ ] Load tasks from a text file
-- [ ] Search tasks
+- [x] Remove task
 - [ ] Edit existing tasks
+- [ ] Search tasks
+- [ ] Save data as JSON
 - [ ] Input validation
 - [ ] Error handling
 
 ### Future Improvements
 
-- [ ] Save data as JSON
 - [ ] Task categories
 - [ ] Task priorities
 - [ ] Due dates

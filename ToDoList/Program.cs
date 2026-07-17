@@ -24,8 +24,12 @@ class Program
         int editTask;
         string editTitle;
         string editDescription;
+        string search;
+        int searchNumber;
+        string searchName;
         
-        // FUCNTIONS
+        
+        // FUNCTIONS
         
         //add function
         void AddTask(string taskTitle, string taskDescription)
@@ -123,6 +127,26 @@ class Program
             return;
         }
         
+        //Search Task function
+        void SearchTask(string search, int searchNumber, string searchName, List<Task> tasks)
+        {
+            if (search == "NUMBER")
+            {
+                Console.WriteLine($"Task: {tasks[searchNumber - 1].Title}\nDescription: {tasks[searchNumber - 1].Description}\nStatus: {tasks[searchNumber - 1].Complete}");
+            }
+            else if (search == "NAME")
+            {
+                foreach (Task task in tasks)
+                {
+                    if (searchName == tasks.Title)
+                    {
+                        
+                    }
+                }
+            }
+
+        }
+        
         // MENU
         do
         {
@@ -196,6 +220,7 @@ class Program
                 Console.ReadKey();
                 break;
             }
+            // OPTION 5
             case "5":
             {
                 Console.Clear();
@@ -212,6 +237,29 @@ class Program
                 
                 Console.WriteLine("Type any key to continue...");
                 Console.ReadKey();
+                
+                break;
+            }
+            // OPTION 6
+            case "6":
+            {
+                Console.Clear();
+                Console.WriteLine(bar);
+                Console.WriteLine("Search Task");
+                Console.WriteLine("Are you going to search for number or name ?:");
+                search = Console.ReadLine().ToUpper();
+                if (search == "NUMBER")
+                {
+                    Console.WriteLine("Type the number of the task: ");
+                    searchNumber = int.Parse(Console.ReadLine());
+                }
+                else if (search == "NAME")
+                {
+                    Console.WriteLine("Type the name of the task:" );
+                    searchName = Console.ReadLine();
+                }
+                
+                
                 
                 break;
             }
