@@ -87,7 +87,7 @@ To Do List
 - [x] List tasks
 - [x] Mark task as completed
 - [x] Remove task
-- [ ] Edit existing tasks
+- [x] Edit existing tasks
 - [ ] Search tasks
 - [ ] Save data as JSON
 - [ ] Input validation
