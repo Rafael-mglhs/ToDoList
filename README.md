@@ -12,6 +12,8 @@ This project is part of my learning journey and will gradually evolve as I study
 - ✅ List all tasks
 - ✅ Mark tasks as completed
 - ✅ Remove tasks
+- ✅ Edit tasks
+- ✅ Search tasks
 - ⏳ Save and load tasks of a JSON file *(planned)*
 
 ---
@@ -72,8 +74,8 @@ To Do List
 2 - List tasks
 3 - Mark as complete
 4 - Remove task
-5 - Save
-6 - Load
+5 - Edit task
+6 - Search task
 0 - Exit
 ```
 
@@ -88,10 +90,10 @@ To Do List
 - [x] Mark task as completed
 - [x] Remove task
 - [x] Edit existing tasks
-- [ ] Search tasks
-- [ ] Save data as JSON
+- [x] Search tasks
 - [ ] Input validation
 - [ ] Error handling
+- [ ] Save data as JSON
 
 ### Future Improvements
 
