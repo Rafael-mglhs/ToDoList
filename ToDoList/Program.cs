@@ -147,6 +147,51 @@ class Program
 
         }
         
+        //Input Validation Functions
+        
+        //string verify
+
+        static string stringVerify(string message)
+        {
+            while (true)
+            {
+                
+                Console.WriteLine(message);
+                string input = Console.ReadLine();
+
+                if (!string.IsNullOrWhiteSpace(input))
+                {
+                    return (input);
+                }
+                
+                Console.WriteLine("Don't leave it blank");
+                Console.ReadKey();
+                Console.Clear();
+            }
+            
+        }
+        
+        //int verify
+        static int intVerify(string message)
+        {
+            int number;
+            
+            while (true)
+            {   
+                Console.WriteLine(message);
+
+                if (int.TryParse(Console.ReadLine(), out number))
+                {
+                    return number;
+                }
+                
+                Console.WriteLine("Invalid value!");
+                Console.ReadKey();
+                Console.Clear();
+            }
+        }
+        
+        
         // MENU
         do
         {
@@ -166,10 +211,8 @@ class Program
                 Console.Clear();
                 Console.WriteLine(bar);
                 Console.WriteLine("Add task");
-                Console.Write("Type the task title: ");
-                taskTitle = Console.ReadLine();
-                Console.Write("\nType the task description: ");
-                taskDescription = Console.ReadLine();
+                taskTitle = stringVerify("type the task title: ");
+                taskDescription = stringVerify("type the task description: ");
                 
                 AddTask(taskTitle, taskDescription);
 
@@ -197,8 +240,7 @@ class Program
                 Console.Clear();
                 Console.WriteLine(bar);
                 Console.WriteLine("Mark as complete");
-                Console.WriteLine("Type the number of the task you want to mark as complete: ");
-                markComplete = int.Parse(Console.ReadLine());
+                markComplete = intVerify("Type the number of the task you want to mark as complete: ");
                 
                 CompleteTask(markComplete, tasks);
                 Console.ReadKey();
@@ -211,8 +253,7 @@ class Program
                 Console.Clear();
                 Console.WriteLine(bar);
                 Console.WriteLine("Remove task");
-                Console.WriteLine("Type the number of the task you want to remove: ");
-                removeTask = int.Parse(Console.ReadLine());
+                removeTask = intVerify("Type the number of the task you want to remove: ");
                 
                 RemoveTask(removeTask, tasks);
                 
@@ -224,14 +265,11 @@ class Program
             case "5":
             {
                 Console.Clear();
-                Console.WriteLine(bar);
+                Console.WriteLine(bar); 
                 Console.WriteLine("Edit task");
-                Console.WriteLine("Type the number of the task you want to edit: ");
-                editTask = int.Parse(Console.ReadLine());
-                Console.WriteLine("Type the new title of the task");
-                editTitle = Console.ReadLine();
-                Console.WriteLine("Type the new description of the task: ");
-                editDescription = Console.ReadLine();
+                editTask = intVerify("Type the number of the task you want to edit: ");
+                editTitle = stringVerify("type the new title of the task: ");
+                editDescription = stringVerify("Type the new description of the task: ");
                 
                 EditTask(editTask, editTitle, editDescription, tasks);
                 
@@ -260,6 +298,9 @@ class Program
                 }
                 
                 
+                
+                Console.WriteLine("Type any key to continue...");
+                Console.ReadKey();
                 
                 break;
             }
