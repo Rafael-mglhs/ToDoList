@@ -133,12 +133,20 @@ class Program
 
             if (int.TryParse(searching, out searchNumber))
             {
-                    Console.WriteLine(
-                    $"Task: {tasks[searchNumber - 1].Title}\nDescription: {tasks[searchNumber - 1].Description}\nStatus: {tasks[searchNumber - 1].Complete}");
+                if ((searchNumber > -1) && (searchNumber <= tasks.Count))
+                {
+                    Console.WriteLine($"Task: {tasks[searchNumber - 1].Title}\nDescription: {tasks[searchNumber - 1].Description}\nStatus: {tasks[searchNumber - 1].Complete}");
                     return;
+                }
+                else
+                {
+                    Console.WriteLine("Invalid task number!");
+                    return;
+                }
             }
             else
             {
+                bool found = false;
                 foreach (Task task in tasks)
                 {
                     status = task.Complete ? "Done" : "Pending...";
@@ -146,8 +154,15 @@ class Program
                     if (task.Title.Equals(searching, StringComparison.OrdinalIgnoreCase))
                     {
                         Console.WriteLine($"Task: {task.Title}\nDescription: {task.Description}\nStatus: {status}");
+                        found = true;
                         return;
                     }
+                }
+
+                if (!found)
+                {
+                    Console.WriteLine("Invalid task name");
+                    return;
                 }
             }
 
