@@ -138,9 +138,9 @@ class Program
             {
                 foreach (Task task in tasks)
                 {
-                    if (searchName == tasks.Title)
+                    if (searchName == task.Title)
                     {
-                        
+                        Console.WriteLine($"Task: {task.Title}\nDescription: {task.Description}\nStatus: {task.Complete}");
                     }
                 }
             }
