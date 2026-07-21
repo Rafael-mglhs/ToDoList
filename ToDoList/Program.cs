@@ -88,6 +88,9 @@ class Program
 
         void RemoveTask(int removeTask, List<Task> tasks)
         {
+            
+            
+            
             int parameter = tasks.Count;
             tasks.RemoveAt(removeTask - 1);
             if (tasks.Count < parameter)
@@ -106,6 +109,7 @@ class Program
         //Edit task funciton
         void EditTask(int editTask, string editTitle, string editDescription, List<Task> tasks)
         {
+            
             string titleParameter = tasks[editTask - 1].Title;
             string descriptionParameter = tasks[editTask - 1].Description;
 
@@ -219,8 +223,7 @@ class Program
                 Console.Clear();
                 string bar = "==============================";
                 Console.WriteLine(bar);
-                Console.WriteLine(
-                    "To Do List\n1 - Add task\n2 - List tasks\n3 - Mark as complete\n4 - Remove task\n5 - Edit task\n6 - Search task\n0 - Exit");
+                Console.WriteLine("To Do List\n1 - Add task\n2 - List tasks\n3 - Mark as complete\n4 - Remove task\n5 - Edit task\n6 - Search task\n0 - Exit");
                 Console.Write("Choose an option: ");
                 option = (Console.ReadLine());
 
@@ -262,12 +265,19 @@ class Program
                         Console.Clear();
                         Console.WriteLine(bar);
                         Console.WriteLine("Mark as complete");
-                        markComplete = intVerify("Type the number of the task you want to mark as complete: ");
+                        markComplete = intVerify("Type the number of the task you want to mark as complete\nPress 0 to cancel: ");
+                        if (markComplete != 0)
+                        {
 
-                        CompleteTask(markComplete, tasks);
-                        Console.ReadKey();
+                            CompleteTask(markComplete, tasks);
+                            Console.ReadKey();
 
-                        break;
+                            break;
+                        }
+                        else
+                        {
+                            break;
+                        }
                     }
                     // OPTION 4
                     case "4":
@@ -275,7 +285,7 @@ class Program
                         Console.Clear();
                         Console.WriteLine(bar);
                         Console.WriteLine("Remove task");
-                        removeTask = intVerify("Type the number of the task you want to remove: ");
+                        removeTask = intVerify("Type the number of the task you want to remove \nPress 0 to cancel: ");
 
                         RemoveTask(removeTask, tasks);
 
@@ -289,16 +299,24 @@ class Program
                         Console.Clear();
                         Console.WriteLine(bar);
                         Console.WriteLine("Edit task");
-                        editTask = intVerify("Type the number of the task you want to edit: ");
-                        editTitle = stringVerify("type the new title of the task: ");
-                        editDescription = stringVerify("Type the new description of the task: ");
+                        editTask = intVerify("Type the number of the task you want to edit\nPress 0 to cancel: ");
+                        if (editTask != 0)
+                        {
 
-                        EditTask(editTask, editTitle, editDescription, tasks);
+                            editTitle = stringVerify("type the new title of the task: ");
+                            editDescription = stringVerify("Type the new description of the task: ");
 
-                        Console.WriteLine("Type any key to continue...");
-                        Console.ReadKey();
+                            EditTask(editTask, editTitle, editDescription, tasks);
 
-                        break;
+                            Console.WriteLine("Type any key to continue...");
+                            Console.ReadKey();
+
+                            break;
+                        }
+                        else
+                        {
+                            break;
+                        }
                     }
                     // OPTION 6
                     case "6":
@@ -306,14 +324,20 @@ class Program
                         Console.Clear();
                         Console.WriteLine(bar);
                         Console.WriteLine("Search Task");
-                        string search = stringVerify("Type the number or name of the task: ");
+                        string search = stringVerify("Type the number or name of the task\nPress 0 to cancel: ");
+                        if (search != "0")
+                        {
+                            SearchTask(search, tasks);
 
-                        SearchTask(search, tasks);
+                            Console.WriteLine("Type any key to continue...");
+                            Console.ReadKey();
 
-                        Console.WriteLine("Type any key to continue...");
-                        Console.ReadKey();
-
-                        break;
+                            break;
+                        }
+                        else
+                        {
+                            break;
+                        }
                     }
 
                 }
