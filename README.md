@@ -91,7 +91,7 @@ To Do List
 - [x] Remove task
 - [x] Edit existing tasks
 - [x] Search tasks
-- [ ] Input validation
+- [x] Input validation
 - [ ] Error handling
 - [ ] Save data as JSON
 
