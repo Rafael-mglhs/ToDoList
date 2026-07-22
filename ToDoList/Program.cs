@@ -15,7 +15,7 @@ class Program
     static void Main(string[] args)
     {
         // VARIABELS
-        string option;
+        int option;
         List<Task> tasks = new List<Task>();
         string taskTitle;
         string taskDescription;
@@ -219,6 +219,37 @@ class Program
                     Console.Clear();
                 }
             }
+            
+            //option verify
+            static int optionVerify(string message)
+            {
+                int number;
+
+                while (true)
+                {
+                    Console.WriteLine(message);
+
+                    if (!int.TryParse(Console.ReadLine(), out number))
+                    {
+                        Console.WriteLine("Invalid value!");
+                    }
+                    else
+                    {
+                        if ((number > -1) && (number <= 6))
+                        {
+                            return number;
+                        }
+                        else
+                        {
+                            Console.WriteLine("Invalid Option");
+                        }
+                    }
+
+                    
+                    
+                }
+
+            }
 
 
             // MENU
@@ -228,31 +259,39 @@ class Program
                 string bar = "==============================";
                 Console.WriteLine(bar);
                 Console.WriteLine("To Do List\n1 - Add task\n2 - List tasks\n3 - Mark as complete\n4 - Remove task\n5 - Edit task\n6 - Search task\n0 - Exit");
-                Console.Write("Choose an option: ");
-                option = (Console.ReadLine());
+                option = optionVerify("Choose an option: ");
 
                 // OPTIONS
                 switch (option)
                 {
                     // OPTION 1
-                    case "1":
+                    case 1:
                     {
                         Console.Clear();
                         Console.WriteLine(bar);
                         Console.WriteLine("Add task");
-                        taskTitle = stringVerify("type the task title: ");
-                        taskDescription = stringVerify("type the task description: ");
-
-                        AddTask(taskTitle, taskDescription);
-
-                        Console.WriteLine("Task added with success!");
-                        Console.WriteLine("Press any key to continue...");
-                        Console.ReadKey();
-
-                        break;
+                        taskTitle = stringVerify("type the task title\nType 0 to cancel: ");
+                        if (taskTitle != "0")
+                        {
+                            taskDescription = stringVerify("type the task description: ");
+                            
+                            AddTask(taskTitle, taskDescription);
+                            
+                            Console.WriteLine("Task added with success!");
+                            Console.WriteLine("Press any key to continue...");
+                            Console.ReadKey();
+                            
+                            break;
+                            
+                        }
+                        else
+                        {
+                            break;
+                        }
+                        
                     }
                     // OPTION 2
-                    case "2":
+                    case 2:
                     {
                         Console.Clear();
                         Console.WriteLine(bar);
@@ -263,7 +302,7 @@ class Program
                         break;
                     }
                     //OPTION 3
-                    case "3":
+                    case 3:
                     {
 
                         Console.Clear();
@@ -284,21 +323,28 @@ class Program
                         }
                     }
                     // OPTION 4
-                    case "4":
+                    case 4:
                     {
                         Console.Clear();
                         Console.WriteLine(bar);
                         Console.WriteLine("Remove task");
                         removeTask = intVerify("Type the number of the task you want to remove \nPress 0 to cancel: ");
 
-                        RemoveTask(removeTask, tasks);
-
-                        Console.WriteLine("Press any key to continue...");
-                        Console.ReadKey();
-                        break;
+                        if (removeTask != 0)
+                        {
+                            RemoveTask(removeTask, tasks);
+                            Console.WriteLine("Press any key to continue...");
+                            Console.ReadKey();
+                            break;
+                        }
+                        else
+                        {
+                            break;
+                        }
+                        
                     }
                     // OPTION 5
-                    case "5":
+                    case 5:
                     {
                         Console.Clear();
                         Console.WriteLine(bar);
@@ -323,7 +369,7 @@ class Program
                         }
                     }
                     // OPTION 6
-                    case "6":
+                    case 6:
                     {
                         Console.Clear();
                         Console.WriteLine(bar);
@@ -345,6 +391,6 @@ class Program
                     }
 
                 }
-            } while (option != "0");
+            } while (option != 0);
         }
     }
