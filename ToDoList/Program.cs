@@ -42,6 +42,12 @@ class Program
         //list tasks function
         void ListTask(List<Task> tasks)
         {
+            if (tasks.Count == 0)
+            {
+                Console.WriteLine("You have no registered tasks");
+                return;
+            }
+            
             Console.Clear();
             
 
@@ -113,6 +119,12 @@ class Program
         //Edit task funciton
         void EditTask(int editTask, string editTitle, string editDescription, List<Task> tasks)
         {
+            if ((editTask > tasks.Count) || (editTask < tasks.Count))
+            {
+                Console.WriteLine("Invalid task number");
+                return;
+            }
+            
             
             string titleParameter = tasks[editTask - 1].Title;
             string descriptionParameter = tasks[editTask - 1].Description;
@@ -304,9 +316,16 @@ class Program
                     //OPTION 3
                     case 3:
                     {
-
+                        
                         Console.Clear();
                         Console.WriteLine(bar);
+                        if (tasks.Count == 0)
+                        {
+                            Console.WriteLine("You have no registered tasks");
+                            Console.WriteLine("Press any key to continue...");
+                            Console.ReadKey();
+                            break;
+                        }
                         Console.WriteLine("Mark as complete");
                         markComplete = intVerify("Type the number of the task you want to mark as complete\nPress 0 to cancel: ");
                         if (markComplete != 0)
@@ -327,6 +346,13 @@ class Program
                     {
                         Console.Clear();
                         Console.WriteLine(bar);
+                        if (tasks.Count == 0)
+                        {
+                            Console.WriteLine("You have no registered tasks");
+                            Console.WriteLine("Press any key to continue...");
+                            Console.ReadKey();
+                            break;
+                        }
                         Console.WriteLine("Remove task");
                         removeTask = intVerify("Type the number of the task you want to remove \nPress 0 to cancel: ");
 
@@ -348,6 +374,13 @@ class Program
                     {
                         Console.Clear();
                         Console.WriteLine(bar);
+                        if (tasks.Count == 0)
+                        {
+                            Console.WriteLine("You have no registered tasks");
+                            Console.WriteLine("Press any key to continue...");
+                            Console.ReadKey();
+                            break;
+                        }
                         Console.WriteLine("Edit task");
                         editTask = intVerify("Type the number of the task you want to edit\nPress 0 to cancel: ");
                         if (editTask != 0)
@@ -373,6 +406,13 @@ class Program
                     {
                         Console.Clear();
                         Console.WriteLine(bar);
+                        if (tasks.Count == 0)
+                        {
+                            Console.WriteLine("You have no registered tasks");
+                            Console.WriteLine("Press any key to continue...");
+                            Console.ReadKey();
+                            break;
+                        }
                         Console.WriteLine("Search Task");
                         string search = stringVerify("Type the number or name of the task\nPress 0 to cancel: ");
                         if (search != "0")
