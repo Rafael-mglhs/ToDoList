@@ -88,7 +88,11 @@ class Program
 
         void RemoveTask(int removeTask, List<Task> tasks)
         {
-            
+            if ((removeTask - 1) > tasks.Count)
+            {
+                Console.WriteLine("Invalid task number!");
+                return;
+            }
             
             
             int parameter = tasks.Count;
