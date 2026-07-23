@@ -1,11 +1,11 @@
 ﻿namespace ToDoList;
 
 // CLASS
-class Task
+class TaskItem
 {
-    public string Title;
-    public string Description;
-    public bool Complete;
+    public string Title { get; set; }
+    public string Description { get; set; }
+    public bool Complete { get; set; }
 
     
 }
@@ -16,7 +16,7 @@ class Program
     {
         // VARIABELS
         int option;
-        List<Task> tasks = new List<Task>();
+        List<TaskItem> tasks = new List<TaskItem>();
         string taskTitle;
         string taskDescription;
         int markComplete;
@@ -31,7 +31,7 @@ class Program
         //add function
         void AddTask(string taskTitle, string taskDescription)
         {
-            tasks.Add(new Task
+            tasks.Add(new TaskItem
             {
                 Title = taskTitle,
                 Description = taskDescription
@@ -40,7 +40,7 @@ class Program
         }
 
         //list tasks function
-        void ListTask(List<Task> tasks)
+        void ListTask(List<TaskItem> tasks)
         {
             if (tasks.Count == 0)
             {
@@ -51,7 +51,7 @@ class Program
             Console.Clear();
             
 
-            foreach (Task task in tasks)
+            foreach (TaskItem task in tasks)
             {
                 string status = task.Complete ? "Done" : "Pending...";
 
@@ -66,7 +66,7 @@ class Program
 
         //Mark as complete function
 
-        void CompleteTask(int markComplete, List<Task> tasks)
+        void CompleteTask(int markComplete, List<TaskItem> tasks)
         {
             if (markComplete > tasks.Count)
             {
@@ -92,9 +92,9 @@ class Program
 
         // Remove task funciton
 
-        void RemoveTask(int removeTask, List<Task> tasks)
+        void RemoveTask(int removeTask, List<TaskItem> tasks)
         {
-            if ((removeTask - 1) > tasks.Count)
+            if ((removeTask > tasks.Count) || (removeTask < 1))
             {
                 Console.WriteLine("Invalid task number!");
                 return;
@@ -117,9 +117,9 @@ class Program
         }
 
         //Edit task funciton
-        void EditTask(int editTask, string editTitle, string editDescription, List<Task> tasks)
+        void EditTask(int editTask, string editTitle, string editDescription, List<TaskItem> tasks)
         {
-            if ((editTask > tasks.Count) || (editTask < tasks.Count))
+            if ((editTask > tasks.Count) || (editTask < 1))
             {
                 Console.WriteLine("Invalid task number");
                 return;
@@ -146,7 +146,7 @@ class Program
         }
 
         //Search Task function
-        void SearchTask(string searching, List<Task> tasks)
+        void SearchTask(string searching, List<TaskItem> tasks)
         {
             int searchNumber;
             string status;
@@ -155,7 +155,8 @@ class Program
             {
                 if ((searchNumber > -1) && (searchNumber <= tasks.Count))
                 {
-                    Console.WriteLine($"Task: {tasks[searchNumber - 1].Title}\nDescription: {tasks[searchNumber - 1].Description}\nStatus: {tasks[searchNumber - 1].Complete}");
+                    status = tasks[searchNumber].Complete ? "Done" : "Pending...";
+                    Console.WriteLine($"Task: {tasks[searchNumber - 1].Title}\nDescription: {tasks[searchNumber - 1].Description}\nStatus: {status}");
                     return;
                 }
                 else
@@ -167,7 +168,7 @@ class Program
             else
             {
                 bool found = false;
-                foreach (Task task in tasks)
+                foreach (TaskItem task in tasks)
                 {
                     status = task.Complete ? "Done" : "Pending...";
                     
