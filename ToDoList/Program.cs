@@ -27,6 +27,13 @@ class Program
 
 
         // FUNCTIONS
+        
+        //Pause
+        void Pause()
+        {
+            Console.WriteLine("Type any key to continue...");
+            Console.ReadKey();
+        }
 
         //add function
         void AddTask(string taskTitle, string taskDescription)
@@ -310,8 +317,7 @@ class Program
                         Console.WriteLine(bar);
                         Console.WriteLine("Tasks");
                         ListTask(tasks);
-                        Console.WriteLine("Press any key to continue...");
-                        Console.ReadKey();
+                        Pause();
                         break;
                     }
                     //OPTION 3
@@ -323,8 +329,7 @@ class Program
                         if (tasks.Count == 0)
                         {
                             Console.WriteLine("You have no registered tasks");
-                            Console.WriteLine("Press any key to continue...");
-                            Console.ReadKey();
+                            Pause();
                             break;
                         }
                         Console.WriteLine("Mark as complete");
@@ -350,8 +355,7 @@ class Program
                         if (tasks.Count == 0)
                         {
                             Console.WriteLine("You have no registered tasks");
-                            Console.WriteLine("Press any key to continue...");
-                            Console.ReadKey();
+                            Pause();
                             break;
                         }
                         Console.WriteLine("Remove task");
@@ -362,15 +366,13 @@ class Program
                             if (removeTask > tasks.Count)
                             {
                                 Console.WriteLine("Invalid task number");
-                                Console.WriteLine("Press any key to go back to menu...");
-                                Console.ReadKey();
+                                Pause();
                                 break;
                              }
                             else
                             {
                                 RemoveTask(removeTask, tasks);
-                                Console.WriteLine("Press any key to continue...");
-                                Console.ReadKey();
+                                Pause();
                                 break;
                             }
                         }
@@ -388,8 +390,7 @@ class Program
                         if (tasks.Count == 0)
                         {
                             Console.WriteLine("You have no registered tasks");
-                            Console.WriteLine("Press any key to continue...");
-                            Console.ReadKey();
+                            Pause();
                             break;
                         }
                         Console.WriteLine("Edit task");
@@ -399,8 +400,7 @@ class Program
                             if (editTask > tasks.Count)
                             {
                                 Console.WriteLine("Invalid task number");
-                                Console.WriteLine("Press any key to go back to menu...");
-                                Console.ReadKey();
+                                Pause();
                                 break;
                             }
                             else
@@ -410,8 +410,7 @@ class Program
 
                                 EditTask(editTask, editTitle, editDescription, tasks);
 
-                                Console.WriteLine("Type any key to continue...");
-                                Console.ReadKey();
+                                Pause();
 
                                 break;
                             }
@@ -429,8 +428,7 @@ class Program
                         if (tasks.Count == 0)
                         {
                             Console.WriteLine("You have no registered tasks");
-                            Console.WriteLine("Press any key to continue...");
-                            Console.ReadKey();
+                            Pause();
                             break;
                         }
                         Console.WriteLine("Search Task");
@@ -440,8 +438,7 @@ class Program
                             
                             SearchTask(search, tasks);
 
-                            Console.WriteLine("Type any key to continue...");
-                            Console.ReadKey();
+                            Pause();
 
                             break;
                         }
