@@ -75,7 +75,7 @@ class Program
 
         void CompleteTask(int markComplete, List<TaskItem> tasks)
         {
-            if (markComplete > tasks.Count)
+            if ((markComplete > tasks.Count) || (markComplete < 1))
             {
                 Console.WriteLine("Invalid task number!");
                 return;
