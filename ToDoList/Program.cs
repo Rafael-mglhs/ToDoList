@@ -358,10 +358,20 @@ class Program
 
                         if (removeTask != 0)
                         {
-                            RemoveTask(removeTask, tasks);
-                            Console.WriteLine("Press any key to continue...");
-                            Console.ReadKey();
-                            break;
+                            if (removeTask > tasks.Count)
+                            {
+                                Console.WriteLine("Invalid task number");
+                                Console.WriteLine("Press any key to go back to menu...");
+                                Console.ReadKey();
+                                break;
+                             }
+                            else
+                            {
+                                RemoveTask(removeTask, tasks);
+                                Console.WriteLine("Press any key to continue...");
+                                Console.ReadKey();
+                                break;
+                            }
                         }
                         else
                         {
@@ -385,16 +395,25 @@ class Program
                         editTask = intVerify("Type the number of the task you want to edit\nPress 0 to cancel: ");
                         if (editTask != 0)
                         {
+                            if (editTask > tasks.Count)
+                            {
+                                Console.WriteLine("Invalid task number");
+                                Console.WriteLine("Press any key to go back to menu...");
+                                Console.ReadKey();
+                                break;
+                            }
+                            else
+                            {
+                                editTitle = stringVerify("type the new title of the task: ");
+                                editDescription = stringVerify("Type the new description of the task: ");
 
-                            editTitle = stringVerify("type the new title of the task: ");
-                            editDescription = stringVerify("Type the new description of the task: ");
+                                EditTask(editTask, editTitle, editDescription, tasks);
 
-                            EditTask(editTask, editTitle, editDescription, tasks);
+                                Console.WriteLine("Type any key to continue...");
+                                Console.ReadKey();
 
-                            Console.WriteLine("Type any key to continue...");
-                            Console.ReadKey();
-
-                            break;
+                                break;
+                            }
                         }
                         else
                         {
@@ -417,6 +436,7 @@ class Program
                         string search = stringVerify("Type the number or name of the task\nPress 0 to cancel: ");
                         if (search != "0")
                         {
+                            
                             SearchTask(search, tasks);
 
                             Console.WriteLine("Type any key to continue...");
