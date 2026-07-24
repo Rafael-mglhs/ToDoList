@@ -1,4 +1,5 @@
-﻿namespace ToDoList;
+﻿namespace ToDoList.Services;
+using ToDoList.Models;
 
 public class TaskService
 {

@@ -1,4 +1,4 @@
-﻿namespace ToDoList;
+﻿namespace ToDoList.Models;
 
 public class TaskItem
 {

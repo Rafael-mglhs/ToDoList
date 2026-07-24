@@ -1,8 +1,12 @@
-﻿namespace ToDoList;
+﻿using ToDoList.Models;
+using ToDoList.Services;
+using ToDoList.Helpers;
+
+namespace ToDoList;
 
 
 
-class Program
+internal class Program
 {
     static void Main(string[] args)
     {
