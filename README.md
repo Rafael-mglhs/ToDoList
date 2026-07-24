@@ -92,7 +92,7 @@ To Do List
 - [x] Edit existing tasks
 - [x] Search tasks
 - [x] Input validation
-- [ ] Error handling
+- [x] Error handling
 - [ ] Save data as JSON
 
 ### Future Improvements
