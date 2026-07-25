@@ -12,7 +12,7 @@ internal class Program
     {
         // VARIABELS
         int option;
-        List<TaskItem> tasks = new List<TaskItem>();
+        List<TaskItem> tasks = JsonService.LoadTasks();
         string taskTitle;
         string taskDescription;
         int markComplete;
@@ -55,6 +55,7 @@ internal class Program
                             Console.WriteLine("Task added with success!");
                             Console.WriteLine("Press any key to continue...");
                             Console.ReadKey();
+                            JsonService.SaveTasks(tasks);
                             
                             break;
                             
@@ -94,7 +95,7 @@ internal class Program
 
                             TaskService.CompleteTask(markComplete, tasks);
                             Console.ReadKey();
-
+                            JsonService.SaveTasks(tasks);
                             break;
                         }
                         else
@@ -128,6 +129,7 @@ internal class Program
                             {
                                 TaskService.RemoveTask(removeTask, tasks);
                                 TaskService.Pause();
+                                JsonService.SaveTasks(tasks);
                                 break;
                             }
                         }
@@ -164,8 +166,8 @@ internal class Program
                                 editDescription = InputValidator.stringVerify("Type the new description of the task: ");
 
                                 TaskService.EditTask(editTask, editTitle, editDescription, tasks);
-
                                 TaskService.Pause();
+                                JsonService.SaveTasks(tasks);
 
                                 break;
                             }
@@ -192,8 +194,8 @@ internal class Program
                         {
                             
                             TaskService.SearchTask(search, tasks);
-
                             TaskService.Pause();
+                            JsonService.SaveTasks(tasks);
 
                             break;
                         }
