@@ -14,7 +14,7 @@ This project is part of my learning journey and will gradually evolve as I study
 - ✅ Remove tasks
 - ✅ Edit tasks
 - ✅ Search tasks
-- ⏳ Save and load tasks of a JSON file *(planned)*
+- ✅ Save and load tasks of a JSON file
 
 ---
 
@@ -93,15 +93,15 @@ To Do List
 - [x] Search tasks
 - [x] Input validation
 - [x] Error handling
-- [ ] Save data as JSON
+- [x] Save data as JSON
 
 ### Future Improvements
 
+- [ ] Graphical interface (WPF or Avalonia)
 - [ ] Task categories
 - [ ] Task priorities
 - [ ] Due dates
 - [ ] Search and filters
-- [ ] Graphical interface (WPF or Avalonia)
 - [ ] Dark mode
 - [ ] Automatically start with Windows
 
