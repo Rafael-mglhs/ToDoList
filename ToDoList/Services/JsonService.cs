@@ -25,13 +25,21 @@ public class JsonService
             string readJson = File.ReadAllText(pathJson);
             if (!string.IsNullOrWhiteSpace(readJson))
             {
-                List<TaskItem> loadedTasks = JsonSerializer.Deserialize<List<TaskItem>>(readJson);
-                if (loadedTasks == null)
+                try
+                {
+                    List<TaskItem> loadedTasks = JsonSerializer.Deserialize<List<TaskItem>>(readJson);
+                    if (loadedTasks == null)
+                    {
+                        return [];
+                    }
+                        return (loadedTasks);
+                }
+                catch(JsonException)
                 {
                     return [];
                 }
-                else
-                    return (loadedTasks);
+                
+                
             }
             else
             {
