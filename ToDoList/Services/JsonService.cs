@@ -6,7 +6,8 @@ namespace ToDoList.Services;
 
 public class JsonService
 {
-    private static readonly string pathJson = "../../../Data/tasks.json";
+    private static readonly string pathJson =
+        Path.Combine(AppContext.BaseDirectory, "Data", "tasks.json");
     //Save tasks in JSON file function
     public static void SaveTasks(List<TaskItem> tasks)
     {
