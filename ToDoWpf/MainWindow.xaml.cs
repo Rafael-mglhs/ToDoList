@@ -20,4 +20,17 @@ public partial class MainWindow : Window
     {
         InitializeComponent();
     }
+    
+    private void AddTaskButton_OnClick(object sender, RoutedEventArgs e)
+    {
+        MessageBox.Show("Dale");
+    }
+    
+    private void Searchbox_TextChanged(object sender, TextChangedEventArgs e)
+    {
+        string searchtext = SearchBox.Text;
+        
+    }
+
+    
 }

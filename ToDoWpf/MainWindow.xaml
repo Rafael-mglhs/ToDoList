@@ -7,6 +7,61 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Header -->
+        <Border Grid.Row="0"
+                BorderBrush="Gray"
+                BorderThickness="0,0,0,1">
+
+            <TextBlock Text="Tasks"
+                       HorizontalAlignment="Center"
+                       FontSize="24"
+                       Margin="0,5,0,10"/>
+        </Border>
+        
+        <!-- Content -->
+        <Grid Grid.Row="1">
+            
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <!-- Add Task and Search Button -->
+            <Grid Grid.Row="0" Margin="20,15,20,10">
+                 <Grid.ColumnDefinitions>
+                     <ColumnDefinition Width="*"/>
+                     <ColumnDefinition Width="Auto" />
+                 </Grid.ColumnDefinitions>
+                
+                <!-- Search area -->
+                <TextBox x:Name="SearchBox"
+                         Grid.Column="0" 
+                         Width="250"
+                         HorizontalAlignment="Left"
+                         VerticalAlignment="Center"/>
+                
+                <!-- Add task -->
+                <Button x:Name="AddTaskButton"
+                        Grid.Column="1"
+                        Width="100"
+                        Height="20"
+                        HorizontalAlignment="Right"
+                        Click="AddTaskButton_OnClick">
+                    Add Task
+                </Button>
+                
+            </Grid>
+            
+            <!-- Task List -->
+            
+            
+            
+            
+        </Grid>
         
     </Grid>
 </Window>
