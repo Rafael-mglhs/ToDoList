@@ -11,4 +11,10 @@
         <ProjectReference Include="..\ToDoList\ToDoList.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+        <None Update="Data\tasks.json">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </None>
+    </ItemGroup>
+    
 </Project>

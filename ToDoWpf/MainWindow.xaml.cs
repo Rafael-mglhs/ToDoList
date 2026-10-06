@@ -49,6 +49,8 @@ public partial class MainWindow : Window
                 task.Description,
                 _tasks
                 );
+            
+            Console.Write(JsonService.pathJson);
             JsonService.SaveTasks(_tasks);
         }
         
