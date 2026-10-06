@@ -50,7 +50,7 @@ internal class Program
                         {
                             taskDescription = InputValidator.stringVerify("type the task description: ");
                             
-                            TaskService.AddTask(taskTitle, taskDescription, tasks);
+                            
                             
                             Console.WriteLine("Task added with success!");
                             Console.WriteLine("Press any key to continue...");
@@ -72,7 +72,7 @@ internal class Program
                         Console.Clear();
                         Console.WriteLine(bar);
                         Console.WriteLine("Tasks");
-                        TaskService.ListTask(tasks);
+                        
                         TaskService.Pause();
                         break;
                     }
@@ -93,7 +93,7 @@ internal class Program
                         if (markComplete != 0)
                         {
 
-                            TaskService.CompleteTask(markComplete, tasks);
+                            
                             Console.ReadKey();
                             JsonService.SaveTasks(tasks);
                             break;
@@ -127,7 +127,7 @@ internal class Program
                              }
                             else
                             {
-                                TaskService.RemoveTask(removeTask, tasks);
+                                
                                 TaskService.Pause();
                                 JsonService.SaveTasks(tasks);
                                 break;
@@ -165,7 +165,7 @@ internal class Program
                                 editTitle = InputValidator.stringVerify("type the new title of the task: ");
                                 editDescription = InputValidator.stringVerify("Type the new description of the task: ");
 
-                                TaskService.EditTask(editTask, editTitle, editDescription, tasks);
+                               
                                 TaskService.Pause();
                                 JsonService.SaveTasks(tasks);
 
@@ -193,7 +193,7 @@ internal class Program
                         if (search != "0")
                         {
                             
-                            TaskService.SearchTask(search, tasks);
+                            
                             TaskService.Pause();
                             JsonService.SaveTasks(tasks);
 

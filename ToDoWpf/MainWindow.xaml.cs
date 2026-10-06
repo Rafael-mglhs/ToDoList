@@ -8,6 +8,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using ToDoList.Models;
+using ToDoList.Services;
+using ToDoList.Helpers;
 
 namespace ToDoWpf;
 
@@ -16,14 +19,39 @@ namespace ToDoWpf;
 /// </summary>
 public partial class MainWindow : Window
 {
+
+    private List<TaskItem> _tasks;
+    
+    private readonly TaskService _taskService;
     public MainWindow()
     {
         InitializeComponent();
+
+        _tasks = new List<TaskItem>();
+        _taskService = new TaskService();
     }
     
     private void AddTaskButton_OnClick(object sender, RoutedEventArgs e)
     {
-        MessageBox.Show("Dale");
+        AddTaskWindow window = new AddTaskWindow();
+
+        window.Owner = this;
+        window.WindowStartupLocation = WindowStartupLocation.CenterOwner;
+
+        bool? result = window.ShowDialog();
+
+        if (result == true)
+        {
+            TaskItem task = window.CreatedTask!;
+            
+            _taskService.AddTask(
+                task.Title,
+                task.Description,
+                _tasks
+                );
+            JsonService.SaveTasks(_tasks);
+        }
+        
     }
     
     private void Searchbox_TextChanged(object sender, TextChangedEventArgs e)

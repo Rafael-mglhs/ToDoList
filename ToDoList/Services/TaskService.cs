@@ -13,7 +13,7 @@ public class TaskService
         }
 
         //add function
-        public static void AddTask(string taskTitle, string taskDescription, List<TaskItem> tasks)
+        public void AddTask(string taskTitle, string taskDescription, List<TaskItem> tasks)
         {
             tasks.Add(new TaskItem
             {
@@ -24,7 +24,7 @@ public class TaskService
         }
 
         //list tasks function
-        public static void ListTask(List<TaskItem> tasks)
+        public void ListTask(List<TaskItem> tasks)
         {
             if (tasks.Count == 0)
             {
@@ -50,7 +50,7 @@ public class TaskService
 
         //Mark as complete function
 
-        public static void CompleteTask(int markComplete, List<TaskItem> tasks)
+        public void CompleteTask(int markComplete, List<TaskItem> tasks)
         {
             if ((markComplete > tasks.Count) || (markComplete < 1))
             {
@@ -76,7 +76,7 @@ public class TaskService
 
         // Remove task funciton
 
-        public static void RemoveTask(int removeTask, List<TaskItem> tasks)
+        public void RemoveTask(int removeTask, List<TaskItem> tasks)
         {
             if ((removeTask > tasks.Count) || (removeTask < 1))
             {
@@ -101,7 +101,7 @@ public class TaskService
         }
 
         //Edit task funciton
-        public static void EditTask(int editTask, string editTitle, string editDescription, List<TaskItem> tasks)
+        public void EditTask(int editTask, string editTitle, string editDescription, List<TaskItem> tasks)
         {
             if ((editTask > tasks.Count) || (editTask < 1))
             {
@@ -130,7 +130,7 @@ public class TaskService
         }
 
         //Search Task function
-        public static void SearchTask(string searching, List<TaskItem> tasks)
+        public void SearchTask(string searching, List<TaskItem> tasks)
         {
             int searchNumber;
             string status;

@@ -40,21 +40,15 @@ public class JsonService
                 {
                     return [];
                 }
-                
-                
             }
             else
             {
                 return [];
             }
-            
-            
         }
         else
         {
             return [];
         }
-        
     }
-    
 }
