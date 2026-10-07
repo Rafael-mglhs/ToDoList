@@ -27,7 +27,7 @@ public partial class MainWindow : Window
     {
         InitializeComponent();
 
-        _tasks = new List<TaskItem>();
+        _tasks = JsonService.LoadTasks();
         _taskService = new TaskService();
     }
     
@@ -50,7 +50,8 @@ public partial class MainWindow : Window
                 _tasks
                 );
             
-            Console.Write(JsonService.pathJson);
+            Console.WriteLine(JsonService.pathJson);
+            Console.Write(_tasks.Count);
             JsonService.SaveTasks(_tasks);
         }
         
