@@ -76,7 +76,7 @@ public class TaskService
 
         // Remove task funciton
 
-        public void RemoveTask(int removeTask, List<TaskItem> tasks)
+        public static void RemoveTask(int removeTask, List<TaskItem> tasks)
         {
             if ((removeTask > tasks.Count) || (removeTask < 1))
             {

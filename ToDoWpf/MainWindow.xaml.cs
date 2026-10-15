@@ -60,6 +60,7 @@ public partial class MainWindow : Window
             Console.Write(_tasks.Count);
             JsonService.SaveTasks(_tasks);
         }
+        LoadTasks();
         
     } 
     //==============
@@ -123,12 +124,17 @@ public partial class MainWindow : Window
             Button removeButton = new Button
             {
                 Content = "Remove",
-                Margin = new Thickness(5, 0, 5, 0)
+                Margin = new Thickness(5, 0, 5, 0),
+                Tag = i,
             };
+
+            removeButton.Click += RemoveButton_Click;
+            
 
             Button editButton = new Button
             {
                 Content = "Edit",
+                Tag = i
             };
 
             buttons.Children.Add(removeButton);
@@ -146,6 +152,26 @@ public partial class MainWindow : Window
         }
         
     }
+    //=======
+    // Remove
+    //=======
+    private void RemoveButton_Click(object sender, RoutedEventArgs e)
+    {
+        if (sender is Button)
+        {
+            Button button = (Button)sender;
+
+            if (button.Tag is int index)
+            {
+                TaskService.RemoveTask(index + 1, _tasks);
+                JsonService.SaveTasks(_tasks);
+                LoadTasks();
+            }
+        }
+        
+        
+    }
+    
     
     private void Searchbox_TextChanged(object sender, TextChangedEventArgs e)
     {
