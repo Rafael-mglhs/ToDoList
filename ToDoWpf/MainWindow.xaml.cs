@@ -133,8 +133,10 @@ public partial class MainWindow : Window
             Button editButton = new Button
             {
                 Content = "Edit",
-                Tag = i
+                Tag = i,
+                
             };
+            editButton.Click += EditTasks;
 
             buttons.Children.Add(removeButton);
             buttons.Children.Add(editButton);
@@ -183,7 +185,50 @@ public partial class MainWindow : Window
     //======
     // Edit
     //======
-    
+    private void EditTasks(object sender, RoutedEventArgs e)
+    {
+        
+        
+
+        
+        if (sender is Button)
+        {
+            Button button = (Button)sender;
+            if (button.Tag is int index)
+            { 
+                TaskItem actualTask = _tasks[index];
+                
+                Edit window = new Edit(actualTask);
+                
+                window.Owner = this;
+                window.WindowStartupLocation = WindowStartupLocation.CenterOwner;
+                
+                bool? result = window.ShowDialog();
+                
+                
+                if (result == true)
+                {  
+                
+                    TaskItem task = window.EditedTask!;
+                                
+                                _taskService.EditTask(
+                                    index + 1,
+                                    task.Title, 
+                                    task.Description,
+                                    _tasks
+                                        );
+                                
+                    JsonService.SaveTasks(_tasks);
+                    LoadTasks();
+                    
+                }
+            }
+            
+            
+
+        }
+
+    }
     
     private void Searchbox_TextChanged(object sender, TextChangedEventArgs e)
     {
