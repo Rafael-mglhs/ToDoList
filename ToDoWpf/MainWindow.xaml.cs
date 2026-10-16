@@ -19,7 +19,6 @@ namespace ToDoWpf;
 /// </summary>
 public partial class MainWindow : Window
 {
-
     private List<TaskItem> _tasks;
     
     private readonly TaskService _taskService;
@@ -157,9 +156,19 @@ public partial class MainWindow : Window
     //=======
     private void RemoveButton_Click(object sender, RoutedEventArgs e)
     {
-        if (sender is Button)
+        var result = MessageBox.Show("Are you sure you want to remove this task ?",
+            "Remove Task",
+            MessageBoxButton.YesNo,
+            MessageBoxImage.Question
+            
+        );
+        
+        if (result == MessageBoxResult.Yes)
         {
-            Button button = (Button)sender;
+            
+            if (sender is Button)
+            {
+                Button button = (Button)sender;
 
             if (button.Tag is int index)
             {
@@ -167,10 +176,13 @@ public partial class MainWindow : Window
                 JsonService.SaveTasks(_tasks);
                 LoadTasks();
             }
+            }
+        
         }
-        
-        
     }
+    //======
+    // Edit
+    //======
     
     
     private void Searchbox_TextChanged(object sender, TextChangedEventArgs e)
