@@ -188,9 +188,6 @@ public partial class MainWindow : Window
     private void EditTasks(object sender, RoutedEventArgs e)
     {
         
-        
-
-        
         if (sender is Button)
         {
             Button button = (Button)sender;
@@ -224,15 +221,113 @@ public partial class MainWindow : Window
                 }
             }
             
-            
-
         }
 
     }
-    
+    //=======
+    // Search
+    //=======
     private void Searchbox_TextChanged(object sender, TextChangedEventArgs e)
     {
-        string searchtext = SearchBox.Text;
+        string searchText = SearchBox.Text;
+        
+        //I tried to make to show just the tasks that contains the tasks titles, but for some reason it just duplicates the stackpanel
+        //I believe its cause I just copied the LoadTasks Function and on in we create the Stack panel again
+        //And I just did here that if the search box gets empty it execute LoadTask, so it just stacks itself, but only twice tho, idk why yet
+        //When I wake up I should try to remove the repeating of the stack panel
+        //Another possible problem it's the tag, in this code below, it basically makes another task list, so the buttons of remove and edit maybe conflict with the other existing one
+        //But I don't know if the other list is still existing with the respectives tags of the respectives button, or it is just temporarily vanished
+        
+        
+        if (searchText == "")
+        {
+            LoadTasks();
+        }
+
+        for (int i = 0; i < _tasks.Count; i++)
+        {
+            if (_tasks[i].Title.Contains(searchText))
+            {
+                TaskItem task = _tasks[i];
+            
+            //task borders
+            Border taskBorder = new Border
+            {
+                BorderBrush = Brushes.Gray,
+                BorderThickness = new Thickness(0, 0, 0, 1),
+                Padding = new Thickness(10),
+                Margin = new Thickness(0, 0, 0, 5)
+            };
+
+            Grid taskGrid = new Grid();
+
+            taskGrid.ColumnDefinitions.Add(
+                new ColumnDefinition { Width = new GridLength(1, GridUnitType.Star) }
+            );
+            taskGrid.ColumnDefinitions.Add(
+                new ColumnDefinition {Width = GridLength.Auto}
+            );
+            
+            //task info
+            StackPanel taskInfo = new StackPanel();
+
+            TextBlock title = new TextBlock
+            {
+                Text = $"{i + 1}. {task.Title}",
+                FontSize = 18
+            };
+
+            TextBlock description = new TextBlock
+            {
+                Text = task.Description,
+                FontSize = 14,
+                Margin = new Thickness(0, 5, 0, 0),
+                TextWrapping = TextWrapping.Wrap
+            };
+
+            taskInfo.Children.Add(title);
+            taskInfo.Children.Add(description);
+            
+            Grid.SetColumn(taskInfo,0);
+            
+            //buttons
+            StackPanel buttons = new StackPanel
+            {
+                Orientation = Orientation.Horizontal,
+                VerticalAlignment = VerticalAlignment.Center
+            };
+
+            Button removeButton = new Button
+            {
+                Content = "Remove",
+                Margin = new Thickness(5, 0, 5, 0),
+                Tag = i,
+            };
+
+            removeButton.Click += RemoveButton_Click;
+            
+
+            Button editButton = new Button
+            {
+                Content = "Edit",
+                Tag = i,
+                
+            };
+            editButton.Click += EditTasks;
+
+            buttons.Children.Add(removeButton);
+            buttons.Children.Add(editButton);
+            
+            Grid.SetColumn(buttons, 1);
+
+            taskGrid.Children.Add(taskInfo);
+            taskGrid.Children.Add(buttons);
+            
+            taskBorder.Child = taskGrid;
+
+            TasksPanel.Children.Add(taskBorder);
+            }
+        }
         
     }
 
