@@ -242,11 +242,13 @@ public partial class MainWindow : Window
         if (searchText == "")
         {
             LoadTasks();
+            return;
         }
+        TasksPanel.Children.Clear();
 
         for (int i = 0; i < _tasks.Count; i++)
         {
-            if (_tasks[i].Title.Contains(searchText))
+            if (_tasks[i].Title.Contains(searchText, StringComparison.OrdinalIgnoreCase))
             {
                 TaskItem task = _tasks[i];
             
@@ -328,6 +330,7 @@ public partial class MainWindow : Window
             TasksPanel.Children.Add(taskBorder);
             }
         }
+        
         
     }
 
