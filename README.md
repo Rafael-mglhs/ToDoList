@@ -158,12 +158,8 @@ To Do List
 ## 🚀 Version 2.0
 
 - [ ] Desktop GUI (WPF or Avalonia)
-- [ ] Task categories
-- [ ] Task priorities
+- [ ] Task reset
 - [ ] Due dates
-- [ ] Search filters
-- [ ] Notifications
-- [ ] Dark Mode
 
 ---
 
