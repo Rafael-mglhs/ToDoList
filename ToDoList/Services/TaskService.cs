@@ -55,11 +55,13 @@ public class TaskService
         if (tasks[i].Complete == false)
         {
             tasks[i].Complete = true;
+            tasks[i].Date = DateTime.Now.Date;
             return;
         }
         if (tasks[i].Complete == true)
         {
             tasks[i].Complete = false;
+            tasks[i].Date = DateTime.Now.Date;
             return;
         }
             

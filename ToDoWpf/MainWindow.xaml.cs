@@ -68,6 +68,7 @@ public partial class MainWindow : Window
     //==============
     private void LoadTasks()
     {
+        
         TasksPanel.Children.Clear();
 
         for (int i = 0; i < _tasks.Count; i++)
@@ -139,6 +140,11 @@ public partial class MainWindow : Window
             };
             editButton.Click += EditTasks;
 
+            if (task.Date > task.Date.AddDays(1))
+            {
+                task.Complete = false;
+            }
+            
             ToggleButton checkButton = new ToggleButton()
             {
                 Width = 20,
@@ -177,6 +183,7 @@ public partial class MainWindow : Window
             {
                 TaskService.CompleteTask(index, _tasks);
                 JsonService.SaveTasks(_tasks);
+                
             }
         }
     }
