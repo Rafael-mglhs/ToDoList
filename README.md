@@ -159,7 +159,7 @@ To Do List
 
 - [ ] Desktop GUI (WPF or Avalonia)
 - [ ] Task reset
-- [ ] Due dates
+
 
 ---
 
