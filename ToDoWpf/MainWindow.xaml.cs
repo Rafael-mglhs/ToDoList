@@ -1,6 +1,7 @@
 ﻿using System.Text;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
@@ -138,6 +139,17 @@ public partial class MainWindow : Window
             };
             editButton.Click += EditTasks;
 
+            ToggleButton checkButton = new ToggleButton()
+            {
+                Width = 20,
+                IsChecked = task.Complete,
+                Tag = i
+                
+            };
+
+            checkButton.Click += CheckBox_OnClick;
+            
+            buttons.Children.Add(checkButton);
             buttons.Children.Add(removeButton);
             buttons.Children.Add(editButton);
             
@@ -153,6 +165,24 @@ public partial class MainWindow : Window
         }
         
     }
+    //==========
+    // CheckBox
+    //==========
+    private void CheckBox_OnClick(object sender, RoutedEventArgs e)
+    {
+        if( sender is ToggleButton)
+        {
+            ToggleButton toggle = (ToggleButton)sender;
+            if (toggle.Tag is int index)
+            {
+                TaskService.CompleteTask(index, _tasks);
+                JsonService.SaveTasks(_tasks);
+            }
+        }
+    }
+    
+    
+    
     //=======
     // Remove
     //=======
@@ -230,13 +260,6 @@ public partial class MainWindow : Window
     private void Searchbox_TextChanged(object sender, TextChangedEventArgs e)
     {
         string searchText = SearchBox.Text;
-        
-        //I tried to make to show just the tasks that contains the tasks titles, but for some reason it just duplicates the stackpanel
-        //I believe its cause I just copied the LoadTasks Function and on in we create the Stack panel again
-        //And I just did here that if the search box gets empty it execute LoadTask, so it just stacks itself, but only twice tho, idk why yet
-        //When I wake up I should try to remove the repeating of the stack panel
-        //Another possible problem it's the tag, in this code below, it basically makes another task list, so the buttons of remove and edit maybe conflict with the other existing one
-        //But I don't know if the other list is still existing with the respectives tags of the respectives button, or it is just temporarily vanished
         
         
         if (searchText == "")

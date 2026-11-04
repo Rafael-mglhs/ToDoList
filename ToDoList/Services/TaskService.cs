@@ -19,7 +19,8 @@ public class TaskService
         tasks.Add(new TaskItem
         {
             Title = taskTitle,
-            Description = taskDescription
+            Description = taskDescription,
+            Complete = false
         });
         return;
     }
@@ -49,27 +50,23 @@ public class TaskService
 
     //Mark as complete function
 
-    public void CompleteTask(int markComplete, List<TaskItem> tasks)
+    public static void CompleteTask(int i, List<TaskItem> tasks)
     {
-        if ((markComplete > tasks.Count) || (markComplete < 1))
+        if (tasks[i].Complete == false)
         {
-            Console.WriteLine("Invalid task number!");
+            tasks[i].Complete = true;
             return;
         }
-        else
+        if (tasks[i].Complete == true)
         {
-            tasks[(markComplete - 1)].Complete = true;
-            if (tasks[(markComplete - 1)].Complete)
-            {
-                Console.WriteLine("Marked successful");
-            }
-            else
-            {
-                Console.WriteLine("Error in searching the task");
-            }
+            tasks[i].Complete = false;
+            return;
+        }
+            
+            
 
-            return;
-        }
+           
+        
     }
 
     // Remove task funciton
