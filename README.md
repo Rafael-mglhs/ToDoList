@@ -160,7 +160,9 @@ To Do List
 - [ ] Desktop GUI (WPF or Avalonia)
 - [ ] Task reset
 
+## 🎨 Version 2.1 (ReDesign)
 
+- [ ] Visual refactor using AI
 ---
 
 # 📄 Changelog
