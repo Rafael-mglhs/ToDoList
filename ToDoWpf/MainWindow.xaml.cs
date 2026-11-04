@@ -347,6 +347,22 @@ public partial class MainWindow : Window
             };
             editButton.Click += EditTasks;
 
+            if (task.Date > task.Date.AddDays(1))
+            {
+                task.Complete = false;
+            }
+            
+            ToggleButton checkButton = new ToggleButton()
+            {
+                Width = 20,
+                IsChecked = task.Complete,
+                Tag = i
+                
+            };
+
+            checkButton.Click += CheckBox_OnClick;
+            
+            buttons.Children.Add(checkButton);
             buttons.Children.Add(removeButton);
             buttons.Children.Add(editButton);
             
