@@ -29,6 +29,14 @@ public partial class MainWindow : Window
 
         _tasks = JsonService.LoadTasks();
         _taskService = new TaskService();
+
+        for (int i = 0; i < _tasks.Count; i++)
+        {
+            if (_tasks[i].Date < _tasks[i].Date.AddDays(1))
+            {
+                _tasks[i].Complete = false;
+            }
+        }
         
         LoadTasks();
         
@@ -346,11 +354,6 @@ public partial class MainWindow : Window
                 
             };
             editButton.Click += EditTasks;
-
-            if (task.Date > task.Date.AddDays(1))
-            {
-                task.Complete = false;
-            }
             
             ToggleButton checkButton = new ToggleButton()
             {
