@@ -32,7 +32,7 @@ public partial class MainWindow : Window
 
         for (int i = 0; i < _tasks.Count; i++)
         {
-            if (_tasks[i].Date < _tasks[i].Date.AddDays(1))
+            if (_tasks[i].Date >= _tasks[i].Date.AddDays(1))
             {
                 _tasks[i].Complete = false;
             }
