@@ -6,16 +6,27 @@ namespace ToDoList.Services;
 
 public class JsonService
 {
-    private static readonly string pathJson =
-        Path.Combine(AppContext.BaseDirectory, "Data", "tasks.json");
-    //Save tasks in JSON file function
+    //directory
+    private static readonly string dataDirectory =
+        Path.Combine(
+            Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
+            "ToDoWpf"
+        );
+    
+    
+    public static readonly string pathJson =
+        Path.Combine(dataDirectory,"tasks.json");
+    
+    
+    //Save tasks in JSON file
     public static void SaveTasks(List<TaskItem> tasks)
     {
         var optionJson = new JsonSerializerOptions { WriteIndented = true };
         string json = JsonSerializer.Serialize(tasks, optionJson);
+        Directory.CreateDirectory(dataDirectory);
         File.WriteAllText(pathJson, json);
         
-        return;
+        
     }
     
     //Load tasks from JSON file function
@@ -40,21 +51,15 @@ public class JsonService
                 {
                     return [];
                 }
-                
-                
             }
             else
             {
                 return [];
             }
-            
-            
         }
         else
         {
             return [];
         }
-        
     }
-    
 }
